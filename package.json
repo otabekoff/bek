@@ -12,7 +12,7 @@
     "build:docs": "node build --source docs -p",
     "build": "npm run build:lib && npm run build:docs",
     "dev": "node build --source docs --watch",
-    "prepublishOnly": "./prepublish.sh"
+    "prepublishOnly": "prepublish.sh"
   },
   "dependencies": {
     "webpack": "^4.41.2"
