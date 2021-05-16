@@ -1,0 +1,294 @@
+@import './variables';
+@import './functions';
+@import './mixins';
+
+// --------------
+// Hidden Classes
+// --------------
+.bek-hidden {
+  display: none !important;
+}
+
+@each $media in 'xs', 'sm', 'md', 'lg', 'xl' {
+  @include respond-to(only-#{$media}) {
+    .bek-hidden-#{$media} {
+      display: none !important;
+    }
+  }
+}
+
+// --------------------------
+// Margin and Padding Classes
+// --------------------------
+@each $property in 'margin', 'padding' {
+  .bek-#{$property} {
+    #{$property}: var(--sizes-space-md) !important;
+  }
+
+  .bek-#{$property}-sm {
+    #{$property}: var(--sizes-space-sm) !important;
+  }
+
+  .bek-no-#{$property} {
+    #{$property}: 0 !important;
+  }
+
+  @each $direction in 'start', 'end', 'top', 'bottom' {
+    .bek-#{$property}-#{$direction} {
+      @if $direction == 'start' {
+        #{$property}-#{$block-start}: var(--sizes-space-md) !important;
+      }
+
+      @else if $direction == 'end' {
+        #{$property}-#{$block-end}: var(--sizes-space-md) !important;
+      }
+
+      @else {
+        #{$property}-#{$direction}: var(--sizes-space-md) !important;
+      }
+    }
+
+    .bek-#{$property}-#{$direction}-sm {
+      @if $direction == 'start' {
+        #{$property}-#{$block-start}: var(--sizes-space-sm) !important;
+      }
+
+      @else if $direction == 'end' {
+        #{$property}-#{$block-end}: var(--sizes-space-sm) !important;
+      }
+
+      @else {
+        #{$property}-#{$direction}: var(--sizes-space-sm) !important;
+      }
+    }
+  }
+}
+
+// --------------
+// Border Classes
+// --------------
+.bek-border {
+  border: solid 1px var(--colors-background-border) !important;
+}
+
+.bek-no-border {
+  border: 0 !important;
+}
+
+@each $direction in 'start', 'end', 'top', 'bottom' {
+  .bek-border-#{$direction} {
+    @if $direction == 'start' {
+      border-#{$block-start}: solid 1px var(--colors-background-border) !important;
+    }
+
+    @else if $direction == 'end' {
+      border-#{$block-end}: solid 1px var(--colors-background-border) !important;
+    }
+
+    @else {
+      border-#{$direction}: solid 1px var(--colors-background-border) !important;
+    }
+  }
+}
+
+// -------------
+// Color Classes
+// -------------
+@each $key in 'bg', 'text' {
+  $prop: 'color';
+
+  @if $key == 'bg' {
+    $prop: 'background';
+  }
+
+  .bek-#{$key}-primary {
+    #{$prop}: $primary-color !important;
+  }
+
+  .bek-#{$key}-secondary {
+    #{$prop}: $secondary-color !important;
+  }
+
+  .bek-#{$key}-info {
+    #{$prop}: $info-color !important;
+  }
+
+  .bek-#{$key}-danger {
+    #{$prop}: $danger-color !important;
+  }
+
+  .bek-#{$key}-warning {
+    #{$prop}: $warning-color !important;
+  }
+
+  .bek-#{$key}-light {
+    #{$prop}: $color-light !important;
+  }
+
+  .bek-#{$key}-dark {
+    #{$prop}: $color-dark !important;
+  }
+}
+
+// ------------------
+// Text Align Classes
+// ------------------
+.bek-text-center {
+  text-align: center !important;
+}
+
+.bek-text-end {
+  text-align: $block-end !important;
+}
+
+.bek-text-start {
+  text-align: $block-start !important;
+}
+
+.bek-text-left {
+  text-align: left !important;
+}
+
+.bek-text-right {
+  text-align: right !important;
+}
+
+.bek-text-justify {
+  text-align: justify !important;
+}
+
+// ------------------
+// Font Classes
+// ------------------
+.bek-font-mono {
+  font-family: monospace;
+}
+
+// ------------------
+// Direction Classes
+// ------------------
+.bek-dir-start {
+  @if $block-start == 'right' {
+    direction: rtl !important;
+  }
+
+  @else {
+    direction: ltr !important;
+  }
+}
+
+.bek-dir-end {
+  @if $block-start == 'left' {
+    direction: rtl !important;
+  }
+
+  @else {
+    direction: ltr !important;
+  }
+}
+
+.bek-ltr {
+  direction: ltr !important;
+}
+
+.bek-rtl {
+  direction: rtl !important;
+}
+
+// --------------
+// Static Classes
+// --------------
+
+.bek-no-shadow {
+  box-shadow: none !important;
+}
+
+.bek-shadow {
+  box-shadow: shadow(bottom) !important;
+}
+
+.bek-no-radius {
+  border-radius: 0 !important;
+}
+
+.bek-radius {
+  border-radius: var(--sizes-radius-md) !important;
+}
+
+.bek-no-wrap {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.bek-pull-start {
+  float: $block-start !important;
+}
+
+.bek-pull-end {
+  float: $block-end !important;
+}
+
+.bek-clear-both {
+  clear: both !important;
+}
+
+.bek-pointer {
+  cursor: pointer !important;
+}
+
+.bek-link {
+  &,
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    color: var(--colors-primary-l1);
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.bek-hr {
+  background: transparent;
+  border-bottom: 0;
+  border-top: solid 1px var(--colors-background-l2);
+  height: 0;
+  width: 100%;
+}
+
+.bek-block {
+  display: block !important;
+  width: 100%;
+}
+
+.bek-inline-block {
+  display: inline-block !important;
+}
+
+.bek-inline {
+  display: inline !important;
+}
+
+.bek-flex,
+.bek-flex-row {
+  display: flex !important;
+  flex-direction: row;
+}
+
+.bek-flex-col {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.bek-grow {
+  flex-grow: 1 !important;
+}
+
+.bek-invalid {
+  @include outline(var(--color-danger-normal));
+}
+
+.bek-disabled {
+  @include disabled;
+}

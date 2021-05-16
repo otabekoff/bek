@@ -1,0 +1,26 @@
+@import './variables';
+@import './functions';
+@import './mixins';
+
+[class*='bek-size'] {
+  height: auto;
+}
+
+@each $media in 'xs', 'sm', 'md', 'lg', 'xl' {
+  .bek-size-#{$media} {
+    font-size: fontSize($media) !important;
+    min-height: heightSize($media) !important;
+  }
+
+  button,
+  input {
+    &.bek-size-#{$media} {
+      height: heightSize($media) !important;
+      line-height: heightSize($media) !important;
+    }
+  }
+
+  .bek-font-#{$media} {
+    font-size: fontSize($media) !important;
+  }
+}

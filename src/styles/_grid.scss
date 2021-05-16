@@ -1,0 +1,98 @@
+@import './variables';
+@import './mixins';
+
+$width-1: 8.33%;
+
+.bek-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: #{$padding / 2};
+  width: 100%;
+}
+
+[class*='bek-col'] {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 100%;
+  min-height: 1px;
+  padding: $padding / 2;
+
+  &.bek-col {
+    width: auto;
+  }
+}
+
+@for $j from 1 through 12 {
+  .bek-col-#{$j} {
+    display: block;
+    flex: 0 0 #{$width-1 * $j};
+    width: #{$width-1 * $j};
+    max-width: #{$width-1 * $j};
+  }
+
+  .bek-col-offset-#{$j} {
+    margin-#{$block-start}: #{$width-1 * $j};
+  }
+}
+
+@each $media in 'xs', 'sm', 'md', 'lg', 'xl' {
+  @include respond-to($media) {
+    @for $i from 1 through 12 {
+      .bek-col-#{$media}-#{$i} {
+        display: block;
+        flex: 0 0 #{$width-1 * $i};
+        width: #{$width-1 * $i};
+        max-width: #{$width-1 * $i};
+      }
+
+      .bek-col-offset-#{$media}-#{$i} {
+        margin-#{$block-start}: #{$width-1 * $i};
+      }
+    }
+    $i: 0;
+
+    .bek-col-#{$media}-#{$i} {
+      display: none;
+    }
+  }
+
+  @include respond-to(only-#{$media}) {
+    @for $i from 1 through 12 {
+      .bek-col-only-#{$media}-#{$i} {
+        display: block;
+        flex: 0 0 #{$width-1 * $i};
+        width: #{$width-1 * $i};
+        max-width: #{$width-1 * $i};
+      }
+
+      .bek-col-offset-only-#{$media}-#{$i} {
+        margin-#{$block-start}: #{$width-1 * $i};
+      }
+    }
+    $i: 0;
+
+    .bek-col-only-#{$media}-#{$i} {
+      display: none;
+    }
+  }
+
+  @include respond-to(lower-#{$media}) {
+    @for $i from 1 through 12 {
+      .bek-col-lower-#{$media}-#{$i} {
+        display: block;
+        flex: 0 0 #{$width-1 * $i};
+        width: #{$width-1 * $i};
+        max-width: #{$width-1 * $i};
+      }
+
+      .bek-col-offset-lower-#{$media}-#{$i} {
+        margin-#{$block-start}: #{$width-1 * $i};
+      }
+    }
+    $i: 0;
+
+    .bek-col-lower-#{$media}-#{$i} {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,282 @@
+@import './variables';
+@import './functions';
+
+// TODO red shoud remove
+@mixin outline($color: var(--colors-primary-shallow), $color2: var(--colors-primary-normal), $border: true) {
+  // $shadow-size-sm: var(--sizes-shadow-md);
+  // $shadow-size: var(--sizes-shadow-md);
+  // $shadow-size-invert: calc(-1 * var(--sizes-shadow-md));
+
+  // z-index: 2;
+  // box-shadow: 0 #{$shadow-size} $shadow-size $shadow-color-light, ;
+  // outline: none;
+
+
+  z-index: 2;
+  box-shadow: 0 0 0 1px $color;
+  outline: none;
+
+
+  @if $color2 {
+    border-color: $color2;
+  }
+}
+
+@mixin textoutline($color: $primary-color) {
+  outline: none;
+  text-shadow: 0 0 10px $color;
+}
+
+@mixin bottom-outline($color: $primary-color) {
+  border-color: $color;
+  z-index: 2;
+  box-shadow: 1px 0 0 2px rgba($color, 0.4);
+  outline: none;
+}
+
+@mixin scrollbar($color: $bg-color) {
+  &::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: contrast($color, 2);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: contrast($color, 3);
+    }
+  }
+}
+
+@mixin nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin yiq($color, $percetange: 90%) {
+  background: $color;
+  color: yiq($color, $percetange);
+}
+
+@mixin disabled($inside: false) {
+  $opacity: 0.35;
+
+  @if $inside {
+    & > * {
+      opacity: $opacity;
+    }
+  }
+
+  @else {
+    opacity: $opacity;
+  }
+
+  &,
+  & * {
+    cursor: not-allowed !important;
+    user-select: none !important;
+  }
+}
+
+@mixin bekButton($bg, $fg, $border: true) {
+  background: $bg;
+  color: $fg;
+
+  @if $border {
+    @include shadow(bottom);
+
+    border: solid 1px contrast($bg, 2, hard-dark);
+  }
+
+  @else {
+    border: none;
+    box-shadow: none;
+  }
+
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      background: contrast($bg, 1, hard-light);
+      transition-duration: 0;
+    }
+
+    &:active {
+      @if $border {
+        @include shadow(inset-bottom);
+      }
+
+      background: contrast($bg, 2, hard-dark);
+      transition-duration: $transition-speed;
+    }
+  }
+
+  &[disabled] {
+    @include disabled;
+  }
+}
+
+@mixin bekInput($bg) {
+  @include yiq(contrast($bg, 1, force-light));
+  @include shadow(bottom);
+
+  border: solid 1px contrast($bg, 2, hard-dark);
+  border-radius: $border-radius;
+  font-family: inherit;
+  position: relative;
+  padding: 0 var(sizes-space-sm);
+
+  &:not([disabled]) {
+    &:hover {
+      border: solid 1px contrast($bg, 3, hard-dark);
+    }
+
+    &:focus,
+    &[focus] {
+      @include outline;
+
+      &:invalid,
+      &[invalid] {
+        @include outline($danger-color);
+      }
+    }
+  }
+
+  &[disabled] {
+    @include disabled;
+  }
+
+  &::placeholder,
+  & > .placeholder {
+    color: contrast($bg, 3, light);
+  }
+}
+
+@mixin vue-animation($selector, $on, $static: false) {
+  @if $static == true {
+    &.#{$selector}-#{$on} {
+      @content;
+    }
+  }
+
+  @else if $on == enter {
+    &.#{$selector}-enter-active,
+    &.#{$selector}-leave-active {
+      @content;
+    }
+  }
+
+  @else if $on == leave {
+    &.#{$selector}-enter,
+    &.#{$selector}-leave-active {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to($media) {
+  @if $media == all {
+    @content;
+  }
+
+  @else if $media == xs {
+    @media #{$media-xs} {
+      @content;
+    }
+  }
+
+  @else if $media == only-xs {
+    @media #{$media-only-xs} {
+      @content;
+    }
+  }
+
+  @else if $media == lower-xs {
+    @media #{$media-lower-xs} {
+      @content;
+    }
+  }
+
+  @else if $media == sm {
+    @media #{$media-sm} {
+      @content;
+    }
+  }
+
+  @else if $media == only-sm {
+    @media #{$media-only-sm} {
+      @content;
+    }
+  }
+
+  @else if $media == lower-sm {
+    @media #{$media-lower-sm} {
+      @content;
+    }
+  }
+
+  @else if $media == md {
+    @media #{$media-md} {
+      @content;
+    }
+  }
+
+  @else if $media == only-md {
+    @media #{$media-only-md} {
+      @content;
+    }
+  }
+
+  @else if $media == lower-md {
+    @media #{$media-lower-md} {
+      @content;
+    }
+  }
+
+  @else if $media == lg {
+    @media #{$media-lg} {
+      @content;
+    }
+  }
+
+  @else if $media == only-lg {
+    @media #{$media-only-lg} {
+      @content;
+    }
+  }
+
+  @else if $media == lower-lg {
+    @media #{$media-lower-lg} {
+      @content;
+    }
+  }
+
+  @else if $media == xl {
+    @media #{$media-xl} {
+      @content;
+    }
+  }
+
+  @else if $media == only-xl {
+    @media #{$media-only-xl} {
+      @content;
+    }
+  }
+
+  @else if $media == lower-xl {
+    @media #{$media-lower-xl} {
+      @content;
+    }
+  }
+}
+
+@mixin shadow($to: bottom, $color: $shadow-color-light) {
+  box-shadow: shadow($to, $color);
+}

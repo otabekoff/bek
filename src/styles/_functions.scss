@@ -1,0 +1,193 @@
+@function luma($color) {
+    @return 0.299 * red($color) + 0.587 * green($color) + 0.114 * blue($color);
+  }
+  
+  @function yiq($color, $percetange: 90%, $threshold: 180) {
+    $light: lighten($color, $percetange);
+    $dark: darken($color, $percetange);
+  
+    @return if(luma($color) < $threshold, $light, $dark);
+  }
+  
+  @function contrast($color: $bg-color, $level: 1, $var: dark) {
+    $threshold: -1;
+  
+    @if $var == force-dark {
+      $threshold: -1;
+    }
+  
+    @else if $var == force-light {
+      $threshold: 256;
+    }
+  
+    @else if $var == dark {
+      $threshold: 60;
+    }
+  
+    @else if $var == hard-dark {
+      $threshold: 25;
+    }
+  
+    @else if $var == light {
+      $threshold: 180;
+    }
+  
+    @else if $var == hard-light {
+      $threshold: 215;
+    }
+  
+    @if $level == 1 {
+      @return yiq($color, 4%, $threshold);
+    }
+  
+    @else if $level == 2 {
+      @return yiq($color, 12%, $threshold);
+    }
+  
+    @else if $level == 3 {
+      @return yiq($color, 30%, $threshold);
+    }
+  
+    @else {
+      @return yiq($color, 40%, $threshold);
+    }
+  }
+  
+  @function fontSize($size: sm) {
+    $base-size: 1;
+  
+    @if $size == xs {
+      @return #{$base-size * 0.6}em;
+    }
+  
+    @else if $size == sm {
+      @return #{$base-size * 0.8}em;
+    }
+  
+    @else if $size == md {
+      @return #{$base-size * 1}em;
+    }
+  
+    @else if $size == lg {
+      @return #{$base-size * 1.2}em;
+    }
+  
+    @else if $size == xl {
+      @return #{$base-size * 1.4}em;
+    }
+  }
+  
+  @function heightSize($size: sm) {
+    $base-size: 2.8;
+  
+    @if $size == xs {
+      @return #{$base-size * 0.8}em;
+    }
+  
+    @else if $size == sm {
+      @return #{$base-size * 0.9}em;
+    }
+  
+    @else if $size == md {
+      @return #{$base-size * 1}em;
+    }
+  
+    @else if $size == lg {
+      @return #{$base-size * 1.2}em;
+    }
+  
+    @else if $size == xl {
+      @return #{$base-size * 1.4}em;
+    }
+  }
+  
+  @function padding($size: sm) {
+    @if $size == no {
+      @return 0;
+    }
+  
+    @else if $size == sm {
+      @return $padding / 2;
+    }
+  
+    @else if $size == md {
+      @return $padding;
+    }
+  
+    @else if $size == lg {
+      @return $padding * 2;
+    }
+  }
+  
+  @function border($size: md, $color: $bg-color) {
+    @if $size == no {
+      @return 0;
+    }
+  
+    @else if $size == md {
+      @return solid 1px contrast($color, 2, hard-dark);
+    }
+  }
+  
+  @function radius($size: md) {
+    @if $size == no {
+      @return 0;
+    }
+  
+    @else if $size == md {
+      @return $border-radius;
+    }
+  
+    @else if $size == full {
+      @return 100%;
+    }
+  }
+  
+  @function shadow($to: bottom, $color: $shadow-color-light) {
+    $shadow-size: var(--sizes-shadow-md);
+    $shadow-size-invert: calc(-1 * var(--sizes-shadow-md));
+  
+    @if $to == no {
+      @return none;
+    }
+  
+    @else if $to == bottom {
+      @return 0 #{$shadow-size} #{$shadow-size} $color;
+    }
+  
+    @else if $to == inset-bottom {
+      @return inset 0 #{$shadow-size} #{$shadow-size} $color;
+    }
+  
+    @else if $to == top {
+      @return 0 #{$shadow-size-invert} #{$shadow-size} $color;
+    }
+  
+    @else if $to == inset-top {
+      @return inset 0 #{$shadow-size-invert} #{$shadow-size} $color;
+    }
+  
+    @else if $to == right {
+      @return #{$shadow-size} 0 #{$shadow-size} $color;
+    }
+  
+    @else if $to == inset-right {
+      @return inset #{$shadow-size} 0 #{$shadow-size} $color;
+    }
+  
+    @else if $to == left {
+      @return #{$shadow-size-invert} 0 #{$shadow-size} $color;
+    }
+  
+    @else if $to == inset-left {
+      @return inset #{$shadow-size-invert} 0 #{$shadow-size} $color;
+    }
+  
+    @else if $to == all {
+      @return 0 0 #{$shadow-size} $color;
+    }
+  
+    @else if $to == inset-all {
+      @return inset 0 0 #{$shadow-size} $color;
+    }
+  }
