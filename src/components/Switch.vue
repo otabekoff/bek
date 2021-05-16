@@ -42,6 +42,7 @@
 <script>
 import color from '../mixins/color';
 import formElement from '../mixins/formElement';
+
 export default {
   inject: ['$theme'],
   mixins: [

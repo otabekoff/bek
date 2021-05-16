@@ -50,6 +50,7 @@
 
 <script>
 import cancelDetector from '../utility/cancelDetector';
+
 export default {
   inject: ['$theme'],
   data() {

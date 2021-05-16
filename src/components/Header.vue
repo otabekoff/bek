@@ -27,6 +27,7 @@
 
 <script>
 import { offsetTo } from '../utility/utils';
+
 export default {
   props: {
     type: {

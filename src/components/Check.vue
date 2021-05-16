@@ -73,6 +73,7 @@
 <script>
 import color from '../mixins/color';
 import formElement from '../mixins/formElement';
+
 const toStatic = JSON.stringify;
 export default {
   inject: ['$theme'],

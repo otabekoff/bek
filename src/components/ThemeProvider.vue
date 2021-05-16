@@ -46,6 +46,7 @@
 import {
   each, shadeColor, colorLightness, hexToRgb, rgbToText, cx,
 } from '../utility/utils';
+
 export default {
   props: {
     direction: {

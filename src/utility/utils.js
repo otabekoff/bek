@@ -9,7 +9,6 @@ export const typeOf = (x) => toString.call(x).match(/\s([a-zA-Z]+)/)[1];
 
 export const each = (obj, cb) => (typeOf(obj) === 'Object' ? Object.keys(obj).forEach((key) => cb(key, obj[key])) : obj.forEach(cb));
 
-
 // https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#--version-2-hex--
 export const hexToRgb = (hexColor) => {
   const color = (() => {
@@ -63,7 +62,6 @@ export const offsetTo = (el, parent) => {
   }
   return ret;
 };
-
 
 export const moveIndex = (number, total) => (total + (number % total)) % total;
 

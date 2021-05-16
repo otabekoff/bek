@@ -4,7 +4,6 @@
   </aside>
 </template>
 
-
 <doc>
 @prop visible @type Boolean @default false @description Sidebar visibility. To use all of bekSidebar functionality, use .sync modifier.
 
@@ -12,7 +11,6 @@
 
 @event update:visible @description @params newVisible @description Triggers when sidemenu open/close.
 </doc>
-
 
 <example>
 @config state false
@@ -29,6 +27,7 @@
 
 <script>
 import cancelDetector from '../utility/cancelDetector';
+
 export default {
   props: {
     visible: {

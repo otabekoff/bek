@@ -30,7 +30,6 @@ module.exports.loading = (prefix = 'Loading') => {
   };
 };
 
-
 module.exports.getArg = (key, type = 'string') => {
   const args = process.argv.slice(2);
   const index = args.indexOf(key);

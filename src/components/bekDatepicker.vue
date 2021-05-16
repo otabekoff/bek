@@ -54,6 +54,7 @@ bek-inputbox.bek-datepicker(:invalid="!bekValidate",
 import bekInputbox from './bekInputbox.vue';
 import icon from '../icons/ARR.svg';
 import iconY from '../icons/WRR.svg';
+
 export default {
   components: {
     bekInputbox,

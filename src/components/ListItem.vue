@@ -88,6 +88,7 @@
 <script>
 import { hasSlot } from '../utility/utils';
 import size from '../mixins/size';
+
 export default {
   mixins: [size],
   inject: ['$theme', '$list'],

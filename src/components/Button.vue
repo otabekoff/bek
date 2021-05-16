@@ -12,7 +12,6 @@
   </component>
 </template>
 
-
 <doc>
 @prop tag @type String @default 'button' @description Rendering html tag.
 @prop fab @type Boolean @default false @description Is Fab mode?
@@ -22,7 +21,6 @@
 @prop cssSize @type oneOf('xs', 'sm', 'md', 'lg', 'xl') @default 'md' @description Size of element.
 
 @slot default
-
 
 @event click @params event @description Triggers when users clicks on component.
 </doc>
@@ -64,6 +62,7 @@
 <script>
 import color from '../mixins/color';
 import size from '../mixins/size';
+
 export default {
   mixins: [color, size],
   props: {

@@ -19,6 +19,7 @@
 import color from '../mixins/color';
 import size from '../mixins/size';
 import formElement from '../mixins/formElement';
+
 const toStatic = JSON.stringify;
 export default {
   inject: ['$theme', '$select'],

@@ -1,10 +1,10 @@
 {
-  "name": "bek",
+  "name": "bekky",
   "version": "0.0.1",
   "description": "A VueJS components library by Bekky.",
   "main": "dist/bek.js",
   "scripts": {
-    "test": "echo 'Hello world' && npm run lint",
+    "test": "echo \"No test specified\"",
     "lint": "eslint . --ignore-path .eslintignore --ext .js,.vue -c .eslintrc.js --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "clean": "rimraf ./dist",
@@ -14,7 +14,9 @@
     "dev": "node build --source docs --watch",
     "prepublishOnly": "./prepublish.sh"
   },
-  "dependencies": {},
+  "dependencies": {
+    "webpack": "^4.41.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
@@ -45,7 +47,6 @@
     "vue-meta": "^2.3.1",
     "vue-router": "^3.1.3",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.41.2",
     "webpack-dev-server": "^3.10.1",
     "webpackbar": "^4.0.0"
   },

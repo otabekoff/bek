@@ -23,6 +23,7 @@
 <script>
 import color from '../mixins/color';
 import size from '../mixins/size';
+
 export default {
   inject: ['$theme'],
   mixins: [

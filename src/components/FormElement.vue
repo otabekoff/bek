@@ -75,6 +75,7 @@
 
 <script>
 import { hasSlot } from '../utility/utils';
+
 export default {
   inject: ['$theme'],
   props: {

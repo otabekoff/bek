@@ -13,7 +13,8 @@
       width="534px"
       height="420px"
       viewBox="0 0 534 420"
-enable-background="new 0 0 534 420" xml:space="preserve"
+      enable-background="new 0 0 534 420"
+      xml:space="preserve"
     >
       <path
         fill="#35495E"

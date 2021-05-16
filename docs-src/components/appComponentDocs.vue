@@ -66,7 +66,7 @@
               <bekTableField slot="td" name="args">
                 <i v-if="!row.params" class="fa fa-times" css-text-color="gray" />
                 <div v-else>
-                  ({{typeof row.params !== 'object' ? row.params : row.params.join(', ')}})
+                  ({{ typeof row.params !== 'object' ? row.params : row.params.join(', ') }})
                 </div>
               </bekTableField>
               <bekTableField slot="td" name="description"> {{ row.description }} </bekTableField>
@@ -90,7 +90,7 @@
               <bekTableField slot="td" name="binding">
                 <i v-if="!row.params" class="fa fa-times" css-text-color="gray" />
                 <div v-else>
-                  {<span>{{typeof row.params !== 'object' ? row.params : row.params.join(', ')}}</span>}
+                  {<span>{{ typeof row.params !== 'object' ? row.params : row.params.join(', ') }}</span>}
                 </div>
               </bekTableField>
               <bekTableField slot="td" name="description"> {{ row.description }} </bekTableField>
@@ -114,7 +114,7 @@
               <bekTableField slot="td" name="binding">
                 <i v-if="!row.params" class="fa fa-times" css-text-color="gray" />
                 <div v-else>
-                  (<span>{{typeof row.params !== 'object' ? row.params : row.params.join(', ')}}</span>)
+                  (<span>{{ typeof row.params !== 'object' ? row.params : row.params.join(', ') }}</span>)
                 </div>
               </bekTableField>
               <bekTableField slot="td" name="description"> {{ row.description }} </bekTableField>

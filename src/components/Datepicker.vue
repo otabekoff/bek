@@ -252,6 +252,7 @@
 import color from '../mixins/color';
 import size from '../mixins/size';
 import formElement from '../mixins/formElement';
+
 const createDateInstance = (dates, Constructor) => {
   let value = null;
   let currentIndex = 0;

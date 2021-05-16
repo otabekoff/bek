@@ -49,6 +49,7 @@
 
 <script>
 import cancelDetector from '../utility/cancelDetector';
+
 export default {
   inheritAttrs: false,
   props: {

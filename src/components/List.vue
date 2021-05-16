@@ -9,7 +9,6 @@
   </component>
 </template>
 
-
 <doc>
 @prop tag @type String @default 'ul' @description Default root element of component.
 
@@ -30,6 +29,7 @@
 
 <script>
 import { moveIndex } from '../utility/utils';
+
 export default {
   inject: {
     $theme: {},

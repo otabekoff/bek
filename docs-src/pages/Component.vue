@@ -29,7 +29,6 @@ import appFooter from '../components/appFooter.vue';
 import appSidebar from '../components/appSidebar.vue';
 import appComponentDocs from '../components/appComponentDocs.vue';
 
-
 export default {
   components: {
     appHeader,

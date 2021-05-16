@@ -12,7 +12,6 @@
   </table>
 </template>
 
-
 <doc>
 @doc @description Try resize window to check style changes based on viewport size.
 
@@ -36,9 +35,9 @@
 </bekTable>
 </example>
 
-
 <script>
 import color from '../mixins/color';
+
 export default {
   inject: ['$theme'],
   mixins: [

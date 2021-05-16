@@ -82,6 +82,7 @@
 <script>
 import { moveIndex } from '../utility/utils';
 import Swipe from '../utility/swipe';
+
 export default {
   inject: ['$theme'],
   props: {

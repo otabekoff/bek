@@ -8,6 +8,7 @@ transition(name="bek-menu")
 import parent from '../utility/parent.js';
 import CancelDetector from '../utility/CancelDetector.js';
 import FocusStoler from '../utility/FocusStoler.js';
+
 export default {
   props: {
     value: {
